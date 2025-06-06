@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 25px 25px;
+    padding: 0;
+}
+
+footer,
+header,
+main {
+  margin: auto;
+  padding: 25px 25px;
+  max-width: 1080px;
+}
+
+header {
+    text-align: center;
+}
+
+section {
+    padding: 25px 25px;
+    margin: 25px 0px;
+    border: 1px solid #667292; 
+    background-color: whitesmoke;
+}
+
+.week {
+    width: 100%
+}
+
+.week_num {
+    background-color: #667292;
+    color: antiquewhite;
+    width: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.week_num a {
+    color: antiquewhite;
+}
+
+.weekly_header {
+    display: flex;
+    border: 1px solid #667292;
+    justify-content: space-between;
+}
+
+.weekly_header_element {
+    background-color: #8d9db6;
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.day_header {
+    background-color: #bccad6;
+    width: auto;
+    padding: 10px;
+}
+
+.activity_box {
+    display: flex;
+    border: 1px solid #667292;
+    justify-content: space-between;
+    padding: 5px 10px;
+    margin: 10px 0px;
+}
+
+.activity_box_element {
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
