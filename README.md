@@ -9,7 +9,7 @@ Why this simple training log? I wanted to learn python, and I use RunGap to expo
 There are lots of improvements that could be made - this is ultimately a very simple program.
 
 ## Dependencies
-Homebrew python3: https://formulae.brew.sh/formula/python@3.13
+Homebrew python3: https://formulae.brew.sh/formula/python@3.13  
 Homebrew nginx: https://formulae.brew.sh/formula/nginx
 
 ## Generating report
