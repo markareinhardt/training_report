@@ -2,6 +2,7 @@ import constants
 import datetime
 
 def open_year_file(log):
+    """ Open annual report html file and start html """
     htmlfile = constants.OUTPUT_FOLDER+'Log-'+log['year']+'.html'
     hf = open(htmlfile, 'w')
     hf.write(f"<!DOCTYPE html><html lang='en'>\n"
@@ -17,6 +18,7 @@ def open_year_file(log):
     return(hf)
 
 def open_week_file(log, week):
+    """ Open weekly report html file and start html """
     htmlfile = constants.OUTPUT_FOLDER+'Log-'+log['year']+'-'+f"%02d"%(week)+'.html'
     hf = open(htmlfile, 'w')
     hf.write(f"<!DOCTYPE html><html lang='en'>\n"
@@ -32,12 +34,16 @@ def open_week_file(log, week):
     return(hf)
 
 def close_file(hf):
+    """ Close an html file """
     hf.write('</main></body></html>')
     hf.close()
 
 def start_week(hf, year, week_num, link, weekly_activities, weekly_time, weekly_load):
+    """ Output weekly header information """
     hf.write("<section>\n")
     hf.write("<div class='week'>\n")
+    # The link parameter indicates if hte week number should be a link to the weekly file,
+    # which is true for the annual file
     if (link):
         weekFormatted = (f"%02d"%(week_num))
         hf.write(f"<p class='week_num'><a href='Log-{year}-{weekFormatted}.html'>Week {week_num}</a></p>\n")
@@ -50,11 +56,13 @@ def start_week(hf, year, week_num, link, weekly_activities, weekly_time, weekly_
     hf.write("</div>\n")
 
 def close_week(hf):
+    # Close html for a week
     hf.write("</div>")
     hf.write("</section>")
     return
 
 def output_week(hf, week):
+    # Loop through a week and output activities, and if none found, output rest day
     for j in range(7):
         hf.write("<p class='day_header'>%s</p>\n" % (week['isoday'][j]['date'].strftime("%a %b %d %Y")))
         if week['isoday'][j]['day_total_activities'] > 0:
@@ -64,6 +72,7 @@ def output_week(hf, week):
             output_restday(hf, week['isoday'][j]['date'])
 
 def output_restday(hf, date):
+    # If the rest day is a past day, output rest, otherwise may just not have an activity for current day
     today = datetime.datetime.today()
     if date < today.date():
         hf.write("<div class='activity_box'>\n")
@@ -107,11 +116,15 @@ def output_activity(hf, activity):
         hf.write("</div>")    
 
 def output_report(log):
+    """ Output the training log annual and weekly html files """
 
+    # Open annua file
     hf = open_year_file(log)
 
+    # Loop through weeks
     for i in range(53):
         if log['isoweek'][i]['week_total_activities'] > 0:
+            # If a week has activities, open weekly file, and output sessions to weekly file
             wf = open_week_file(log, i+1)
             start_week(wf, log['year'], i+1, False,
                         log['isoweek'][i]['week_total_activities'],
@@ -121,12 +134,14 @@ def output_report(log):
             close_week(wf)
             close_file(wf)
             
+            # Ouput sessions to annual file
             start_week(hf, log['year'], i+1, True,
                         log['isoweek'][i]['week_total_activities'],
                         log['isoweek'][i]['week_total_time'],
                         log['isoweek'][i]['week_total_load'])
             close_week(hf)
     
+    # Close annual file after week loop
     close_file(hf)
 
     return

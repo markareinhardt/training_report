@@ -1,9 +1,11 @@
 import constants
-import zipfile, json
+import zipfile
+import json
 from datetime import datetime
 
 def import_workout(file):
     activity = {
+        """ Structure for an activity to be returned """
         "start_time": None,
         "isoyear": None,
         "isoweek": None,
@@ -15,6 +17,7 @@ def import_workout(file):
         "load": 0
     }
 
+    # If file is a zip file, open metadata json file out of zip and populate activity to return
     if file.name.endswith(constants.FILE_EXTENSION):
         json_file_name = file.name.rpartition(".")[0]+".metadata.json"
         with zipfile.ZipFile(constants.INPUT_FOLDER+"/"+file.name, 'r') as zip:
