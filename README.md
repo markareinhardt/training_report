@@ -11,7 +11,7 @@ There are lots of improvements that could be made - this is ultimately a very si
 ## Dependencies
 Homebrew python3: https://formulae.brew.sh/formula/python@3.13  
 Homebrew nginx: https://formulae.brew.sh/formula/nginx.  
-Create a directory called training_report in nging www directory.  
+Create a directory called training_report in nginx www directory.  
 Copy log.css into training_report directory.  
 
 ## Generating report
