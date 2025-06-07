@@ -11,6 +11,8 @@ There are lots of improvements that could be made - this is ultimately a very si
 ## Dependencies
 Homebrew python3: https://formulae.brew.sh/formula/python@3.13  
 Homebrew nginx: https://formulae.brew.sh/formula/nginx
+Create a directory called training_report in nging www directory
+Copy log.css into training_report directory
 
 ## Generating report
 You can generate the report by just calling "python3 generate.py" with an optional year parameter. The report will be generated on your local Mac machine. I write it to the nginx folder and view the report locally only. I haven't bothered to export the html files to something that exposes the report outside the local machine.
