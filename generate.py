@@ -20,7 +20,7 @@ def sort_start_time(e):
   """ Used to sort training sessions by start_time """
   return e['start_time']
 
-""" Structure to hold all training sessions """
+# Structure to hold all training sessions
 log = {
     "year": args.year,
     "year_total_time": 0,

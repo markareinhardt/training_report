@@ -118,7 +118,7 @@ def output_activity(hf, activity):
 def output_report(log):
     """ Output the training log annual and weekly html files """
 
-    # Open annua file
+    # Open annual file
     hf = open_year_file(log)
 
     # Loop through weeks

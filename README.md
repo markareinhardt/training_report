@@ -10,9 +10,9 @@ There are lots of improvements that could be made - this is ultimately a very si
 
 ## Dependencies
 Homebrew python3: https://formulae.brew.sh/formula/python@3.13  
-Homebrew nginx: https://formulae.brew.sh/formula/nginx.  
-Create a directory called training_report in nginx www directory.  
-Copy log.css into training_report directory.  
+Homebrew nginx: https://formulae.brew.sh/formula/nginx  
+Create a directory called training_report in nginx www directory  
+Copy log.css into training_report directory  
 
 ## Generating report
 You can generate the report by just calling "python3 generate.py" with an optional year parameter. The report will be generated on your local Mac machine. I write it to the nginx folder and view the report locally only. I haven't bothered to export the html files to something that exposes the report outside the local machine.
@@ -21,9 +21,7 @@ You can generate the report by just calling "python3 generate.py" with an option
 http://localhost:8080/training_report/Log-2025.html (replace year as appropriate)
 
 ## Running generator every hour
-I use cron to run the report 'hourly' (which works when the Mac is awake - so isn't really 'hourly').
+I use cron to run the report 'hourly' (which works when the Mac is awake - so isn't really 'hourly'). Cron prompted for permission for Python to access files the first time.
 
 Cron to run hourly:
 0 * * * * /opt/homebrew/bin/python3 /Users/{yourname}/{path_to_source}/generate.py >> /Users/{yourname}/cron_log.txt 2>&1
-
-Cron prompted for permission for Python to access files the first time, and only runs when Mac is awake
